@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,10 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ICreditCard.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Models\CreditCard.cs" />
     <Compile Include="Models\MasterCard.cs" />
     <Compile Include="Models\Shopper.cs" />
     <Compile Include="Models\Visa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

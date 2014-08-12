@@ -1,0 +1,5 @@
+﻿<module name="ShopperModule">
+	<bind service="ShoppingCart.ICreditCard, ShoppingCart"
+		  to="ShoppingCart.MasterCard, ShoppingCart"
+		  scope="singleton" />
+</module>

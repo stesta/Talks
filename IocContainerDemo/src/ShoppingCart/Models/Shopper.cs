@@ -8,12 +8,14 @@ namespace ShoppingCart
 {
     public class Shopper
     {
-        private readonly ICreditCard _creditCard;
+        private ICreditCard _creditCard;
 
         public Shopper(ICreditCard creditCard)
         {
             _creditCard = creditCard;
         }
+
+        //public ICreditCard CreditCard { get { return _creditCard; } set { _creditCard = value; } }
 
         public void Charge()
         {
