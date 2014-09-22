@@ -21,10 +21,9 @@ namespace WindowsForms
 
             using (var kernel = new StandardKernel())
             {
-                kernel.Bind<ICreditCard>().To<MasterCard>();
+                kernel.Bind<ICreditCard>().To<Visa>();
+
                 var mainform = kernel.Get<Form1>();
-                               
-                //Application.Run(new Form1());
                 Application.Run(mainform);
             }
         }

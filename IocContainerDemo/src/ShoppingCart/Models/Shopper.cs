@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace ShoppingCart
             _creditCard = creditCard;
         }
 
+        //[]
         //public ICreditCard CreditCard { get { return _creditCard; } set { _creditCard = value; } }
 
         public void Charge()

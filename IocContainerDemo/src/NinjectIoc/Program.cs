@@ -19,14 +19,13 @@ namespace NinjectIoc
             // 1 create the kernel
             var kernel = new StandardKernel();
 
-            //// 2 bind/map our dependencies
+            // 2 bind/map our dependencies
             kernel.Bind<ICreditCard>().To<MasterCard>();
 
-            //// 3 bind to self
-            //kernel.Bind<Shopper>().ToSelf();
+            // 3 bind to self
+            kernel.Bind<Shopper>().ToSelf().InSingletonScope();
 
-            //// 4 rebind
-            //kernel.Rebind<ICreditCard>().To<Visa>().InSingletonScope();
+            // 4 rebind
 
             // 5 property injection
 
@@ -36,17 +35,13 @@ namespace NinjectIoc
             //kernel.Load(new ShopperModule());
 
             // 8 xml config
-            //kernel.Load(Helpers.AssemblyDirectory + "\\*.xml");
+            //Helpers.AssemblyDirectory + "\\*.xml"
 
             // 9 conventions
-            
 
             // 10 on activating
-            
 
             // 11 existing methods & factories
-            
-
             
 
             Shopper shopper = kernel.Get<Shopper>();
@@ -60,20 +55,20 @@ namespace NinjectIoc
             Console.ReadKey();
         }
 
-        public static ICreditCard GetCard(string user)
-        {
-            // some complicated logic 
-            return new MasterCard();
-        }
+        //public static ICreditCard GetCard(string user)
+        //{
+        //    // some complicated logic 
+        //    return new MasterCard();
+        //}
 
-        public class ShopperModule : NinjectModule
-        {
+        //public class ShopperModule : NinjectModule
+        //{
 
-            public override void Load()
-            {
-                Bind<ICreditCard>().To<Visa>();
-                Rebind<ICreditCard>().To<MasterCard>().InSingletonScope();
-            }
-        }
+        //    public override void Load()
+        //    {
+        //        Bind<ICreditCard>().To<Visa>();
+        //        //Rebind<ICreditCard>().To<MasterCard>().InSingletonScope();
+        //    }
+        //}
     }
 }

@@ -20,7 +20,7 @@ namespace WPFApplication
             base.OnStartup(e);
             using (var kernel = new StandardKernel())
             {
-                kernel.Bind<ICreditCard>().To<MasterCard>();
+                kernel.Bind<ICreditCard>().To<Visa>();
                 
                 var mainWindow = kernel.Get<MainWindow>();
                 mainWindow.Show();

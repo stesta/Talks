@@ -12,17 +12,17 @@ namespace IocContainerDemo
     {
         static void Main(string[] args)
         {
-            //Shopper shopper = new Shopper(new MasterCard());
-            //shopper.Charge();
-
-            // configuration
-            var container = new Resolver();
-            container.Register<Shopper, Shopper>();
-            container.Register<ICreditCard, MasterCard>();
-
-            // get to the Shoppa!
-            Shopper shopper = container.Resolve<Shopper>();
+            Shopper shopper = new Shopper(new MasterCard());
             shopper.Charge();
+
+            //// configuration
+            //var container = new Resolver();
+            //container.Register<Shopper, Shopper>();
+            ////container.Register<ICreditCard, Visa>();
+
+            //// get to the Shoppa!
+            //Shopper shopper = container.Resolve<Shopper>();
+            //shopper.Charge();
 
             Console.ReadKey();
         }
