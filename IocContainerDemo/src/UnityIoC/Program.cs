@@ -16,10 +16,10 @@ namespace UnityIoC
             var container = new UnityContainer();
 
             // 2 bind/map our dependencies
-            container.RegisterType<ICreditCard, Visa>(new ContainerControlledLifetimeManager());
+            container.RegisterType<ICreditCard, Visa>();
 
             // 3 bind to self
-            container.RegisterType<Shopper, Shopper>();
+            container.RegisterType<Shopper, Shopper>(new ContainerControlledLifetimeManager());
             
 
             // 4 lifetime and scope

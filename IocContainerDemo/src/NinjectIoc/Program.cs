@@ -20,12 +20,13 @@ namespace NinjectIoc
             var kernel = new StandardKernel();
 
             // 2 bind/map our dependencies
-            kernel.Bind<ICreditCard>().To<MasterCard>();
+            //kernel.Bind<ICreditCard>().To<MasterCard>();
 
-            // 3 bind to self
-            kernel.Bind<Shopper>().ToSelf().InSingletonScope();
+            //// 3 bind to self
+            //kernel.Bind<Shopper>().ToSelf().InSingletonScope();
 
-            // 4 rebind
+            //// 4 rebind
+            //kernel.Rebind<ICreditCard>().To<Visa>();
 
             // 5 property injection
 
@@ -35,14 +36,23 @@ namespace NinjectIoc
             //kernel.Load(new ShopperModule());
 
             // 8 xml config
-            //Helpers.AssemblyDirectory + "\\*.xml"
+            //kernel.Load(Helpers.AssemblyDirectory + "\\*.xml");
 
             // 9 conventions
-
+            //kernel.Bind(x => x
+            //                  .FromAssembliesInPath(Helpers.AssemblyDirectory)
+            //                  .SelectAllClasses()
+            //                  .InheritedFrom<ICreditCard>()
+            //                  .BindDefaultInterfaces()
+            //                  .Configure(b => b.InSingletonScope()
+            //                                   .WithConstructorArgument("name", "BackupCard"))
+            //                  //.ConfigureFor<Shopper>(b => b.InThreadScope())
+            //            );
             // 10 on activating
+            //kernel.Bind<ICreditCard>().To<MasterCard>().OnActivation(ctx => )
 
             // 11 existing methods & factories
-            
+            kernel.Bind<ICreditCard>().ToMethod(ctx => GetCard("user"));
 
             Shopper shopper = kernel.Get<Shopper>();
             shopper.Charge();
@@ -55,20 +65,20 @@ namespace NinjectIoc
             Console.ReadKey();
         }
 
-        //public static ICreditCard GetCard(string user)
-        //{
-        //    // some complicated logic 
-        //    return new MasterCard();
-        //}
+        public static ICreditCard GetCard(string user)
+        {
+            // some complicated logic 
+            return new MasterCard();
+        }
 
-        //public class ShopperModule : NinjectModule
-        //{
+        public class ShopperModule : NinjectModule
+        {
 
-        //    public override void Load()
-        //    {
-        //        Bind<ICreditCard>().To<Visa>();
-        //        //Rebind<ICreditCard>().To<MasterCard>().InSingletonScope();
-        //    }
-        //}
+            public override void Load()
+            {
+                Bind<ICreditCard>().To<Visa>();
+                Rebind<ICreditCard>().To<MasterCard>().InSingletonScope();
+            }
+        }
     }
 }

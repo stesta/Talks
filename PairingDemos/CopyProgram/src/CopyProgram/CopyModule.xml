@@ -1,0 +1,7 @@
+﻿<module name="CopyModule">
+	<bind service="CopyProgram.IReader, CopyProgram"
+		  to="CopyProgram.ConsoleReader, CopyProgram" />
+
+  <bind service="CopyProgram.IWriter, CopyProgram"
+        to="CopyProgram.ConsoleWriter, CopyProgram" />
+</module>

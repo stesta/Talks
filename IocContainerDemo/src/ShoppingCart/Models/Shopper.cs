@@ -11,13 +11,13 @@ namespace ShoppingCart
     {
         private ICreditCard _creditCard;
 
-        public Shopper(ICreditCard creditCard)
-        {
-            _creditCard = creditCard;
-        }
+        //public Shopper(ICreditCard creditCard)
+        //{
+        //    _creditCard = creditCard;
+        //}
 
-        //[]
-        //public ICreditCard CreditCard { get { return _creditCard; } set { _creditCard = value; } }
+        [Inject]
+        public ICreditCard CreditCard { get { return _creditCard; } set { _creditCard = value; } }
 
         public void Charge()
         {
